@@ -1,0 +1,17 @@
+{
+  "name": "file-indexer-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "",
+  "keywords": [
+  ],
+  "author": "",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^4.0.8"
+  }
+}
