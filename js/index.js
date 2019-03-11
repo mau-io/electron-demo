@@ -16,10 +16,6 @@ exLinksBtn.addEventListener('click', (event) => {
 
 /**--------------------------------------------------------- */
 
-let directory = "imagenes/futuristic/";
-
-const files = fs.readdirSync(directory);
-
 const container = document.getElementById('msgContainer');
 
 function appendNewImage(path) {
@@ -43,20 +39,33 @@ function appendNewLink(path, createAText) {
 
 }
 
+function render(directory = "imagenes/futuristic/"){
+  
+  container.innerHTML = null;
+  const files = fs.readdirSync(directory);
+  
+  for (let index = 0; index < files.length; index++) {
+    appendNewImage(directory+files[index]);  
+    appendNewLink(directory+files[index], "link " + index); 
+  }
 
-for (let index = 0; index < files.length; index++) {
-  appendNewImage(directory+files[index]);  
-  appendNewLink(directory+files[index], "link " + index); 
+  var link = document.querySelectorAll('.openFile');
+
+  for (var i = 0; i < link.length; i++) {
+    link[i].addEventListener('click', function(event) {
+      let image = this.getAttribute('id');
+      console.log(image);
+      shell.openItem(path.join(__dirname, image));
+    });
+  }
+
+} 
+
+/**--------------------- */
+function searching(){
+  let text = document.getElementById('search').value;
+  render(text);
+  console.log(text)
 }
 
-//openFile
-
-var link = document.querySelectorAll('.openFile');
-
-for (var i = 0; i < link.length; i++) {
-  link[i].addEventListener('click', function(event) {
-    let image = this.getAttribute('id');
-    console.log(image);
-    shell.openItem(path.join(__dirname, image));
-  });
-}
+render();

@@ -4,14 +4,17 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package:win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --out=out --icon=assets/app-icon/win/app.ico"
   },
   "repository": "",
-  "keywords": [
-  ],
+  "keywords": [],
   "author": "",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^4.0.8"
+    "electron": "^4.0.8",
+    "electron-packager": "^13.1.1"
+  },
+  "dependencies": {
   }
 }
